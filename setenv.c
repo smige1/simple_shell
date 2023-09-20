@@ -41,7 +41,7 @@ char *getenvi(info_t *info, const char *name)
  *        constant function prototype.
  *  Return: Always 0
  */
-int issetenv(info_t *info)
+int _mysetenv(info_t *info)
 {
 	if (info->argc != 3)
 	{
@@ -59,7 +59,7 @@ int issetenv(info_t *info)
  *        constant function prototype.
  * Return: Always 0
  */
-int unissetenv(info_t *info)
+int _myunsetenv(info_t *info)
 {
 	int i;
 
