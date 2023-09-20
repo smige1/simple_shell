@@ -171,13 +171,13 @@ void free_info(info_t *, int);
 
 char *getenv(info_t *, const char *);
 int myenv(info_t *);
-int setenv(info_t *);
-int unsetenv(info_t *);
+int issetenv(info_t *);
+int unissetenv(info_t *);
 int populate_env_list(info_t *);
 
 char **get_environ(info_t *);
-int unsetenv(info_t *, char *);
-int setenv(info_t *, char *, char *);
+int unissetenv(info_t *, char *);
+int issetenv(info_t *, char *, char *);
 
 char *get_history_file(info_t *info);
 int write_history(info_t *info);
