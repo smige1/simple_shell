@@ -36,8 +36,8 @@ int chain(info_t *info, char *buf, size_t *p)
 
 	if (buf[y] == '|' && buf[y + 1] == '|')
 	{
-		buf[] = 0;
-		y++;
+		buf[y] = 0;
+		++y;
 		info->cmd_buf_type = CMD_OR;
 	}
 	else if (buf[y] == '&' && buf[y + 1] == '&')
@@ -95,7 +95,7 @@ int replace_alias(info_t *info)
 		if (!node)
 			return (0);
 		free(info->argv[0]);
-		p = _strchr(node->str, '=');
+		z = _strchr(node->str, '=');
 		if (!z)
 			return (0);
 		z = _strdup(z + 1);
@@ -125,7 +125,7 @@ int replace_vars(info_t *info)
 		}
 		if (!_strcmp(info->argv[y], "$$"))
 		{
-			replace_string(&(info->argv[i]),
+			replace_string(&(info->argv[y]),
 					_strdup(convert_number(getpid(), 10, 0)));
 			continue;
 		}
