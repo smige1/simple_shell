@@ -75,9 +75,9 @@ typedef struct passinfo
 	int err_num;
 	int linecount_flag;
 	char *fname;
-	list_t *env;
-	list_t *history;
-	list_t *alias;
+	list_t *envi;
+	
+	
 	char **environ;
 	int env_changed;
 	int status;
@@ -119,12 +119,12 @@ int loophsh(char **);
 int _eputchar(char);
 int _putfd(char y, int yz);
 int _putsfd(char *str, int yz);
-void write(char *);
-int strcmp(char *, char *);
+
+
 char *starts_with(const char *, const char *);
 int myhistory(info_t *);
 int myalias(info_t *);
-char *strcat(char *, char *);
+
 
 char *strdup(const char *);
 
@@ -135,7 +135,7 @@ int _putchar(char);
 
 
 
-char *strncpy(char *, char *, int);
+
 
 
 
@@ -148,7 +148,7 @@ int interactive(info_t *);
 int myexit(info_t *);
 int mycd(info_t *);
 int myhelp(info_t *);
-int free(void **);
+
 void print_error(info_t *, char *);
 int print_d(int, int);
 int unsetenvi(info_t *);
@@ -182,15 +182,15 @@ int build_history_list(info_t *info, char *buf, int linecount);
 char *get_history_file(info_t *info);
 list_t *add_node(list_t **, const char *, int);
 size_t list_len(const list_t *);
-int interactive(info_t *info)
-int is_del(char v, char *del)
-int alpha(int v)
-int atoi(char *x)
-int chain(info_t *info, char *buf, size_t *p)
-void check_chain(info_t *info, char *buf, size_t *z, size_t x, size_t len)
-int replace_alias(info_t *info)
-int replace_vars(info_t *info)
-int replace_string(char **old, char *new)
+int interactive(info_t *)'
+int is_del(char v, char *del);
+int alpha(int v);
+int atoi(char *x);
+int chain(info_t *info, char *buf, size_t *p);
+void check_chain(info_t *info, char *buf, size_t *z, size_t x, size_t len);
+int replace_alias(info_t *info);
+int replace_vars(info_t *info);
+int replace_string(char **old, char *new);
 int is_cmd(info_t *info, char *path)
 char *dup_chars(char *pathstr, int start, int stop)
 char *find_path(info_t *info, char *pathstr, char *cmd)
