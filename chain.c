@@ -37,7 +37,7 @@ int chain(info_t *info, char *buf, size_t *p)
 	if (buf[y] == '|' && buf[y + 1] == '|')
 	{
 		buf[] = 0;
-		++;
+		y++;
 		info->cmd_buf_type = CMD_OR;
 	}
 	else if (buf[y] == '&' && buf[y + 1] == '&')
