@@ -102,30 +102,30 @@ int issetenv(info_t *info, char *var, char *value)
 char **list_to_strings(list_t *head)
 {
 	list_t *node = head;
-	size_t p = list_len(head), z;
+	size_t i = list_len(head), j;
 	char **strs;
 	char *str;
 
-	if (!head || !p)
+	if (!head || !i)
 		return (NULL);
-	strs = malloc(sizeof(char *) * (p + 1));
+	strs = malloc(sizeof(char *) * (i + 1));
 	if (!strs)
 		return (NULL);
-	for (p = 0; node; node = node->next, p++)
+	for (i = 0; node; node = node->next, i++)
 	{
 		str = malloc(_strlen(node->str) + 1);
 		if (!str)
 		{
-			for (z = 0; z < i; z++)
-				free(strs[z]);
+			for (j = 0; j < i; j++)
+				free(strs[j]);
 			free(strs);
 			return (NULL);
 		}
 
 		str = _strcpy(str, node->str);
-		strs[p] = str;
+		strs[i] = str;
 	}
-	strs[p] = NULL;
+	strs[i] = NULL;
 	return (strs);
 }
 
