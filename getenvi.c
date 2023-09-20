@@ -4,7 +4,22 @@
  * get_environ - returns the string array copy of our environ
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
- * Return: Always 0
+ * list_len - determines length of list
+ * @h: pointer to first node
+ *
+ * Return: size of list
+ * unsetenv - Remove an environment variable
+ * @info: Structure containing potential arguments. Used to maintain
+ *        constant function prototype.
+ *  Return: 1 on delete, 0 otherwise
+ * @var: the string env var property
+ * setenv - Initialize a new environment variable,
+ *             or modify an existing one
+ * @info: Structure containing potential arguments. Used to maintain
+ *        constant function prototype.
+ * @var: the string env var property
+ * @value: the string env var value
+ *  Return: Always 0
  */
 char **get_environ(info_t *info)
 {
@@ -17,14 +32,8 @@ char **get_environ(info_t *info)
 	return (info->environ);
 }
 
-/**
- * _unsetenv - Remove an environment variable
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: 1 on delete, 0 otherwise
- * @var: the string env var property
- */
-int _unsetenv(info_t *info, char *var)
+
+int unsetenv(info_t *info, char *var)
 {
 	list_t *node = info->env;
 	size_t i = 0;
@@ -49,16 +58,8 @@ int _unsetenv(info_t *info, char *var)
 	return (info->env_changed);
 }
 
-/**
- * _setenv - Initialize a new environment variable,
- *             or modify an existing one
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- * @var: the string env var property
- * @value: the string env var value
- *  Return: Always 0
- */
-int _setenv(info_t *info, char *var, char *value)
+
+int setenv(info_t *info, char *var, char *value)
 {
 	char *buf = NULL;
 	list_t *node;
@@ -101,47 +102,42 @@ int _setenv(info_t *info, char *var, char *value)
 char **list_to_strings(list_t *head)
 {
 	list_t *node = head;
-	size_t i = list_len(head), j;
+	size_t p = list_len(head), z;
 	char **strs;
 	char *str;
 
-	if (!head || !i)
+	if (!head || !p)
 		return (NULL);
-	strs = malloc(sizeof(char *) * (i + 1));
+	strs = malloc(sizeof(char *) * (p + 1));
 	if (!strs)
 		return (NULL);
-	for (i = 0; node; node = node->next, i++)
+	for (p = 0; node; node = node->next, p++)
 	{
 		str = malloc(_strlen(node->str) + 1);
 		if (!str)
 		{
-			for (j = 0; j < i; j++)
-				free(strs[j]);
+			for (z = 0; z < i; z++)
+				free(strs[z]);
 			free(strs);
 			return (NULL);
 		}
 
 		str = _strcpy(str, node->str);
-		strs[i] = str;
+		strs[p] = str;
 	}
-	strs[i] = NULL;
+	strs[p] = NULL;
 	return (strs);
 }
 
-/**
- * list_len - determines length of linked list
- * @h: pointer to first node
- *
- * Return: size of list
- */
+
 size_t list_len(const list_t *h)
 {
-	size_t i = 0;
+	size_t p = 0;
 
 	while (h)
 	{
 		h = h->next;
-		i++;
+		p++;
 	}
-	return (i);
+	return (p);
 }
