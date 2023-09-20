@@ -33,7 +33,7 @@ char **get_environ(info_t *info)
 }
 
 
-int unsetenv(info_t *info, char *var)
+int unissetenv(info_t *info, char *var)
 {
 	list_t *node = info->env;
 	size_t i = 0;
@@ -59,7 +59,7 @@ int unsetenv(info_t *info, char *var)
 }
 
 
-int setenv(info_t *info, char *var, char *value)
+int issetenv(info_t *info, char *var, char *value)
 {
 	char *buf = NULL;
 	list_t *node;
