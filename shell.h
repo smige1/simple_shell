@@ -169,8 +169,8 @@ void clear_info(info_t *);
 void set_info(info_t *, char **);
 void free_info(info_t *, int);
 
-char *getenv(info_t *, const char *);
-int myenv(info_t *);
+char *getenvi(info_t *, const char *);
+int myenvi(info_t *);
 int issetenv(info_t *);
 int unissetenv(info_t *);
 int populate_env_list(info_t *);
