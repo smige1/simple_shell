@@ -125,26 +125,26 @@ char *starts_with(const char *, const char *);
 int myhistory(info_t *);
 int myalias(info_t *);
 char *strcat(char *, char *);
-int strlen(char *);
+
 char *strdup(const char *);
-void write(char *);
+
 ssize_t get_input(info_t *);
 int _getline(info_t *, char **, size_t *);
 void sigintHandler(int);
 int _putchar(char);
-char *strcpy(char *, char *);
-char *strncat(char *, char *, int);
-char *strchr(char *, char);
+
+
+
 char *strncpy(char *, char *, int);
-void free(char **);
-void *realloc(void *, unsigned int, unsigned int);
-char *memset(char *, char, unsigned int);
+
+
+
 char **strtow(char *, char *);
 char **strtow2(char *, char);
 int is_delim(char, char *);
 int isalpha(int);
 int interactive(info_t *);
-int atoi(char *);
+
 int myexit(info_t *);
 int mycd(info_t *);
 int myhelp(info_t *);
@@ -163,8 +163,8 @@ void set_info(info_t *, char **);
 char *getenvi(info_t *, const char *);
 void free_info(info_t *, int);
 char **get_environ(info_t *);
-int unsetenvi(info_t *, char *);
-int setenvi(info_t *, char *, char *);
+
+
 char **list_to_strings(list_t *);
 size_t print_list(const list_t *);
 list_t *node_starts_with(list_t *, char *, char);
