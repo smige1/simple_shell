@@ -3,15 +3,7 @@
 /**
  * clear_info - initializes info_t struct
  * @info: struct address
- * set_info - initializes info_t struct
- * @info: struct address
- * free_info - frees info_t struct fields
- * @av: argument vector
- * 
- * @info: struct address
- * @all: true if freeing all fields
  */
-
 void clear_info(info_t *info)
 {
 	info->arg = NULL;
@@ -20,12 +12,16 @@ void clear_info(info_t *info)
 	info->argc = 0;
 }
 
-
+/**
+ * set_info - initializes info_t struct
+ * @info: struct address
+ * @av: argument vector
+ */
 void set_info(info_t *info, char **av)
 {
-	int y = 0;
+	int i = 0;
 
-	info->yname = av[0];
+	info->fname = av[0];
 	if (info->arg)
 	{
 		info->argv = strtow(info->arg, " \t");
@@ -38,19 +34,23 @@ void set_info(info_t *info, char **av)
 				info->argv[1] = NULL;
 			}
 		}
-		for (y = 0; info->argv && info->argv[y]; y++)
+		for (i = 0; info->argv && info->argv[i]; i++)
 			;
-		info->argc = y;
+		info->argc = i;
 
 		replace_alias(info);
 		replace_vars(info);
 	}
 }
 
-
+/**
+ * free_info - frees info_t struct fields
+ * @info: struct address
+ * @all: true if freeing all fields
+ */
 void free_info(info_t *info, int all)
 {
-	yfree(info->argv);
+	ffree(info->argv);
 	info->argv = NULL;
 	info->path = NULL;
 	if (all)
@@ -63,12 +63,11 @@ void free_info(info_t *info, int all)
 			free_list(&(info->history));
 		if (info->alias)
 			free_list(&(info->alias));
-		yfree(info->environ);
+		ffree(info->environ);
 			info->environ = NULL;
-		zfree((void **)info->cmd_buf);
+		bfree((void **)info->cmd_buf);
 		if (info->readfd > 2)
 			close(info->readfd);
 		_putchar(BUF_FLUSH);
 	}
 }
-
