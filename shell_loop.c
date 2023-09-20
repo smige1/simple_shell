@@ -132,7 +132,7 @@ void fork_cmd(info_t *info)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
-		/* TODO: PUT ERROR FUNCTION */
+		
 		perror("Error:");
 		return;
 	}
@@ -234,8 +234,8 @@ int _mycd(info_t *info)
 	}
 	else
 	{
-		setenv(info, "OLDPWD", getenv(info, "PWD="));
-		setenv(info, "PWD", getcwd(buffer, 1024));
+		issetenv(info, "OLDPWD", getenv(info, "PWD="));
+		issetenv(info, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
 }
