@@ -191,35 +191,36 @@ void check_chain(info_t *info, char *buf, size_t *z, size_t x, size_t len);
 int replace_alias(info_t *info);
 int replace_vars(info_t *info);
 int replace_string(char **old, char *new);
-int is_cmd(info_t *info, char *path)
-char *dup_chars(char *pathstr, int start, int stop)
-char *find_path(info_t *info, char *pathstr, char *cmd)
-int free(void **ptr)
-int setenv(info_t *info, char *var, char *values)
-size_t input_buf(info_t *info, char **buf, size_t *len)
-size_t get_input(info_t *info)
-size_t read_buf(info_t *info, char *buf, size_t *p)
-int _getline(info_t *info, char **ptr, size_t *length)
-void sigintHandler(__attribute__((unused))int sig_num)
-void _eputs(char *str)
-int find_builtin(info_t *info)
-void fork_cmd(info_t *info)
-void find_cmd(info_t *info)
-int _eputchar(char y)
-int shell_loop(info_t *info, char **yz)
-int populate_envi_list(info_t *info)
-int main()
-int setenvi(info_t *info)
-int unsetenvi(info_t *info)
-char *getenvi(info_t *info, const char *name)
-int envi(info_t *info)
-void free_info(info_t *info, int all)
-int _putfd(char y, int yz)
-void set_info(info_t *info, char **av)
-void clear_info(info_t *info)
-int _putsfd(char *str, int yz)
+int is_cmd(info_t *info, char *path);
+char *dup_chars(char *pathstr, int start, int stop);
+char *find_path(info_t *info, char *pathstr, char *cmd);
+int free(void **ptr);
+int setenv(info_t *info, char *var, char *values);
+size_t input_buf(info_t *info, char **buf, size_t *len);
+size_t get_input(info_t *info);
+size_t read_buf(info_t *info, char *buf, size_t *p);
+int _getline(info_t *info, char **ptr, size_t *length);
+void sigintHandler(__attribute__((unused))int sig_num);
+void _eputs(char *str);
+int find_builtin(info_t *info);
+void fork_cmd(info_t *info);
+void find_cmd(info_t *info);
+int _eputchar(char y);
+int shell_loop(info_t *info, char **yz);
+int populate_envi_list(info_t *info);
+int main();
+int setenvi(info_t *info);
+int unsetenvi(info_t *info);
+char *getenvi(info_t *info, const char *name);
+int envi(info_t *info);
+void free_info(info_t *info, int all);
+int _putfd(char y, int yz);
+void set_info(info_t *info, char **av);
+void clear_info(info_t *info);
+int _putsfd(char *str, int yz);
 ssize_t get_node_index(list_t *, list_t *);
 void free_list(list_t **);
 int renumber_history(info_t *info);
+
 
 #endif
