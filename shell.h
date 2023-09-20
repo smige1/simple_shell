@@ -182,7 +182,7 @@ int build_history_list(info_t *info, char *buf, int linecount);
 char *get_history_file(info_t *info);
 list_t *add_node(list_t **, const char *, int);
 size_t list_len(const list_t *);
-int interactive(info_t *)'
+int interactive(info_t *)
 int is_del(char v, char *del);
 int alpha(int v);
 int atoi(char *x);
