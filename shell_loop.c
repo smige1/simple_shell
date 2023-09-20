@@ -57,7 +57,7 @@ int find_builtin(info_t *info)
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
 		{"exit", _myexit},
-		{"env", myenv},
+		{"env", myenvi},
 		{"help", _myhelp},
 		{"history", _myhistory},
 		{"setenv", issetenv},
@@ -100,7 +100,7 @@ void find_cmd(info_t *info)
 	if (!k)
 		return;
 
-	path = find_path(info, getenv(info, "PATH="), info->argv[0]);
+	path = find_path(info, getenvi(info, "PATH="), info->argv[0]);
 	if (path)
 	{
 		info->path = path;
@@ -108,7 +108,7 @@ void find_cmd(info_t *info)
 	}
 	else
 	{
-		if ((interactive(info) || getenv(info, "PATH=")
+		if ((interactive(info) || getenvi(info, "PATH=")
 					|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
 			fork_cmd(info);
 		else if (*(info->arg) != '\n')
@@ -206,24 +206,24 @@ int _mycd(info_t *info)
 		_puts("TODO: >>getcwd failure emsg here<<\n");
 	if (!info->argv[1])
 	{
-		dir = getenv(info, "HOME=");
+		dir = getenvi(info, "HOME=");
 		if (!dir)
 			chdir_ret = /* TODO: what should this be? */
-				chdir((dir = getenv(info, "PWD=")) ? dir : "/");
+				chdir((dir = getenvi(info, "PWD=")) ? dir : "/");
 		else
 			chdir_ret = chdir(dir);
 	}
 	else if (_strcmp(info->argv[1], "-") == 0)
 	{
-		if (!getenv(info, "OLDPWD="))
+		if (!getenvi(info, "OLDPWD="))
 		{
 			_puts(s);
 			_putchar('\n');
 			return (1);
 		}
-		_puts(getenv(info, "OLDPWD=")), _putchar('\n');
+		_puts(getenvi(info, "OLDPWD=")), _putchar('\n');
 		chdir_ret = 
-			chdir((dir = getenv(info, "OLDPWD=")) ? dir : "/");
+			chdir((dir = getenvi(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
 		chdir_ret = chdir(info->argv[1]);
@@ -234,7 +234,7 @@ int _mycd(info_t *info)
 	}
 	else
 	{
-		issetenv(info, "OLDPWD", getenv(info, "PWD="));
+		issetenv(info, "OLDPWD", getenvi(info, "PWD="));
 		issetenv(info, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
