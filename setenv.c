@@ -6,7 +6,7 @@
  *          constant function prototype.
  * Return: Always 0
  */
-int myenvi(info_t *info)
+int _myenv(info_t *info)
 {
 	print_list_str(info->env);
 	return (0);
@@ -19,7 +19,7 @@ int myenvi(info_t *info)
  *
  * Return: the value
  */
-char *getenvi(info_t *info, const char *name)
+char *_getenv(info_t *info, const char *name)
 {
 	list_t *node = info->env;
 	char *p;
