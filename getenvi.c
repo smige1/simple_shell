@@ -59,39 +59,7 @@ int _unsetenv(info_t *info, char *var)
 }
 
 
-int _setenv(info_t *info, char *var, char *value)
-{
-	char *buf = NULL;
-	list_t *node;
-	char *p;
 
-	if (!var || !value)
-		return (0);
-
-	buf = malloc(_strlen(var) + _strlen(value) + 2);
-	if (!buf)
-		return (1);
-	_strcpy(buf, var);
-	_strcat(buf, "=");
-	_strcat(buf, value);
-	node = info->env;
-	while (node)
-	{
-		p = starts_with(node->str, var);
-		if (p && *p == '=')
-		{
-			free(node->str);
-			node->str = buf;
-			info->env_changed = 1;
-			return (0);
-		}
-		node = node->next;
-	}
-	add_node_end(&(info->env), buf, 0);
-	free(buf);
-	info->env_changed = 1;
-	return (0);
-}
 
 /**
  * list_to_strings - returns an array of strings of the list->str
@@ -132,12 +100,12 @@ char **list_to_strings(list_t *head)
 
 size_t list_len(const list_t *h)
 {
-	size_t z = 0;
+	size_t p = 0;
 
 	while (h)
 	{
 		h = h->next;
-		z++;
+		p++;
 	}
-	return (z);
+	return (p);
 }
