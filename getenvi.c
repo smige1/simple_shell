@@ -33,7 +33,7 @@ char **get_environ(info_t *info)
 }
 
 
-int unissetenv(info_t *info, char *var)
+int _unsetenv(info_t *info, char *var)
 {
 	list_t *node = info->env;
 	size_t i = 0;
@@ -59,7 +59,7 @@ int unissetenv(info_t *info, char *var)
 }
 
 
-int issetenv(info_t *info, char *var, char *value)
+int _setenv(info_t *info, char *var, char *value)
 {
 	char *buf = NULL;
 	list_t *node;
@@ -132,12 +132,12 @@ char **list_to_strings(list_t *head)
 
 size_t list_len(const list_t *h)
 {
-	size_t p = 0;
+	size_t z = 0;
 
 	while (h)
 	{
 		h = h->next;
-		p++;
+		z++;
 	}
-	return (p);
+	return (z);
 }
