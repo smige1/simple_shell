@@ -59,7 +59,7 @@ int _unsetenv(info_t *info, char *var)
 }
 
 
-int _mysetenv(info_t *info, char *var, char *value)
+int _setenv(info_t *info, char *var, char *value)
 {
 	char *buf = NULL;
 	list_t *node;
