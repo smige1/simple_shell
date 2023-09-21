@@ -135,34 +135,34 @@ int replace_alias(info_t *info)
 
 int replace_vars(info_t *info)
 {
-	int i = 0;
+	int z = 0;
 	list_t *node;
 
-	for (i = 0; info->argv[i]; i++)
+	for (z = 0; info->argv[z]; z++)
 	{
-		if (info->argv[i][0] != '$' || !info->argv[i][1])
+		if (info->argv[z][0] != '$' || !info->argv[z][1])
 			continue;
 
-		if (!_strcmp(info->argv[i], "$?"))
+		if (!_strcmp(info->argv[z], "$?"))
 		{
-			replace_string(&(info->argv[i]),
+			replace_string(&(info->argv[z]),
 					_strdup(convert_number(info->status, 10, 0)));
 			continue;
 		}
-		if (!_strcmp(info->argv[i], "$$"))
+		if (!_strcmp(info->argv[z], "$$"))
 		{
-			replace_string(&(info->argv[i]),
+			replace_string(&(info->argv[z]),
 					_strdup(convert_number(getpid(), 10, 0)));
 			continue;
 		}
-		node = node_starts_with(info->env, &info->argv[i][1], '=');
+		node = node_starts_with(info->env, &info->argv[z][1], '=');
 		if (node)
 		{
-			replace_string(&(info->argv[i]),
+			replace_string(&(info->argv[z]),
 					_strdup(_strchr(node->str, '=') + 1));
 			continue;
 		}
-		replace_string(&info->argv[i], _strdup(""));
+		replace_string(&info->argv[z], _strdup(""));
 
 	}
 	return (0);
