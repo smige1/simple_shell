@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * _puts - prints an input string
- * @str: the string to be printed
+ * _puts - prints an input string ==
+ * @str: the string to be printed ==
  *
  * Return: Nothing
  */
