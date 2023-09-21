@@ -2,9 +2,16 @@
 
 /**
  * _mycd - changes the current directory of the process
- * @info: Structure containing potential arguments. Used to maintain
+ * @info: Structure containing 
  * constant function prototype.
- * Return: Always 0
+ * 
+ * _setenv - Initialize a new environment variable,
+ *
+ * @info: Structure containing potential arguments. Used to maintain
+ *
+ * @var: the string env var property
+ * @value: the string env var value
+ *  Return: Always 0
  */
 int _mycd(info_t *info)
 {
@@ -50,15 +57,7 @@ int _mycd(info_t *info)
 	return (0);
 }
 
-/**
- * _setenv - Initialize a new environment variable,
- *             or modify an existing one
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- * @var: the string env var property
- * @value: the string env var value
- *  Return: Always 0
- */
+
 int _setenv(info_t *info, char *var, char *value)
 {
 	char *buf = NULL;
