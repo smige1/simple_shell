@@ -30,7 +30,7 @@ pid_t pid = fork();
 if (pid == 0)
 {
 /* Child process*/
-execve(cmd, NULL, environ);
+execve(cmd, environ,NULL);
 exit(1);
 }
 else if (pid > 0)
