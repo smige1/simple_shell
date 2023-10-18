@@ -15,3 +15,4 @@
  * _atoi - converts a string to an integer
  * @s: the string to be converted
  * Return: 0 if no numbers in string, con
+ */
